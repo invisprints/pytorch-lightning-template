@@ -46,10 +46,10 @@ if __name__ == '__main__':
     parser = pl.Trainer.add_argparse_args(parser)
     parser.add_argument('--model_type', default='vision', type=str, choices=['vision', 'nlp'])
     temp_args, _ = parser.parse_known_args()
-    if temp_args.model == 'vision':
+    if temp_args.model_type == 'vision':
         parser = LitClassifier.add_model_specific_args(parser)
         parser = VisionDataModule.add_argparse_args(parser)
-    elif temp_args.model == 'nlp':
+    elif temp_args.model_type == 'nlp':
         raise NotImplementedError("nlp not achieve")
     else:
         raise NotImplementedError("pl temp not complete")
@@ -58,6 +58,7 @@ if __name__ == '__main__':
     parser.add_argument('--ckpt', type=str, default=None)
 
     args = parser.parse_args()
+    # args = parser.parse_args(args=[]) # for jupyter notebook
 
     print(args)
     cli_main(args)

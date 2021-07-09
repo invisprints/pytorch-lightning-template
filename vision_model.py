@@ -64,5 +64,5 @@ class LitClassifier(pl.LightningModule):
         parser = parent_parser.add_argument_group("vision model")
         parser.add_argument('--lr', type=float, default=1e-3)
         parser.add_argument('--img_model', default='resnet50', choices=['resnet34', 'resnet50', 'resnet101'])
-        return parser
+        return parent_parser
 
